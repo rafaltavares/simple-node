@@ -35,10 +35,6 @@ jobs:
            docker build -t tifarafa/simple-node:latest .
            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin  
            docker push tifarafa/simple-node
-      
-       
-     
-     
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
