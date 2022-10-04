@@ -25,6 +25,8 @@ jobs:
           command: |
             echo 'nothing needs to be installed'
             echo 'no tests'
+            echo $DOCKER_PASSWORD
+            echo $DOCKER_USERNAME
       - run: 
          name: "build-to-dockerhub"
          command: |
