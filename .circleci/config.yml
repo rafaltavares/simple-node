@@ -10,9 +10,9 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: cimg/base:2022.06
-        auth:
-          username: $DOCKER_USERNAME
-          password: $DOCKER_PASSWORD
+        #auth:
+        #  username: $DOCKER_USERNAME
+         # password: $DOCKER_PASSWORD
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     
@@ -31,10 +31,9 @@ jobs:
          name: "build-to-dockerhub"
          command: |
           TAG=0.1.$CIRCLE_BUILD_NUM
-           docker --version 
-           docker build -t tifarafa/simple-node:latest .
-           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin  
-           docker push tifarafa/simple-node
+           docker build -t tifarafa/simple-node:TAG .
+           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+           docker push tifarafa/simple-node:TAG
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
